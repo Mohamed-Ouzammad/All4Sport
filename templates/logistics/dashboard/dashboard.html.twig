@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Tableau de bord{% endblock %}
+
+{% block stylesheets %}
+    <style>
+        .item {
+            display: block;
+            background-color: #F1F1F1;
+            color: var(--primaryColor);
+            margin: 10px 0;
+            padding: 20px;
+            border: 1px solid transparent;
+            border-radius: var(--radiusBorder);
+            transition: .2s ease;
+            transition-property: background-color, border-color;
+        }
+        .item:hover {
+            background-color: #E1E1E1;
+            border-color: #aaa;
+        }
+    </style>
+{% endblock %}
+
+{% block header %}
+    {% include 'logistics/headerLinks.html.twig' %}
+{% endblock %}
+
+{% block body %}
+    <h1>Tableau de bord</h1>
+    <div class="app_container app_padding">
+        {% for product in products %}
+            <a class="item" href="{{ path('app_logistics_product', {'id': product.getProduct().getId()|format_number}) }}">{{ product.getProduct().getName() }}</a>
+        {% endfor %}
+    </div>
+{% endblock %}

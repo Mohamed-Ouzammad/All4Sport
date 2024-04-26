@@ -1,0 +1,101 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Confirmer votre commande{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/cart.css') }}">
+{% endblock %}
+
+{% block header %}
+    {% include 'client/headerLinks.html.twig' %}
+{% endblock %}
+
+{% block body %}
+    <div class="app_container app_padding">
+        <h1>Livraison</h1>
+        <div class="modify_cart">
+            <a href="{{ path('app_client_cart') }}" title="Modifier mon panier">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--primaryColor)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H6M12 5l-7 7 7 7"/></svg>
+                Modifier mon panier
+            </a>
+        </div>
+        <form class="flex" method="POST" action="{{ path('app_client_place_order') }}">
+            <div class="order_details">
+                <div class="delivery_choice">
+                    <p class="delivery_choice-title">Choix de livraison</p>
+                    {% for flash in app.flashes('error') %}
+                        <p class="error">{{ flash }}</p>
+                    {% endfor %}
+                    <div class="delivery_choice-box">
+                        <input type="radio" id="delivery-choice-store" name="delivery-choice">
+                        <label for="delivery-choice-store">En magasin</label>
+                        <div class="form">
+                            <select name="store">
+                                <option value="">Choisissez un magasin</option>
+                                {% for store in stores %}
+                                    <option value="{{ store.getId() }}">{{ store.getCity() }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                    <div class="delivery_choice-box">
+                        <input type="radio" id="delivery-choice-home" name="delivery-choice">
+                        <label for="delivery-choice-home">À domicile (+ {{ shipping_cost|format_currency('EUR') }})</label>
+                        <div class="form">
+                            <div class="flex">
+                                <div class="box-input">
+                                    <label for="street">Rue</label>
+                                    <input type="text" id="street" name="street">
+                                </div>
+                                <div class="box-input">
+                                    <label for="zip-code">Code postal</label>
+                                    <input type="text" id="zip-code" name="zip-code">
+                                </div>
+                            </div>
+                            <div class="box-input">
+                                <label for="city">Ville</label>
+                                <input type="text" id="city" name="city">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="priceAndConfirmOrder">
+                <div class="order_price">
+                    <p>
+                        Nombre d'articles<br>
+                        <span class="nb_products_value">{{ cart.getNbProducts() }}</span>
+                    </p>
+                    <p id="delivery-choice-home-value" hidden>
+                        Livraison à domicile<br>
+                        <span>{{ shipping_cost|format_currency('EUR') }}</span>
+                    </p>
+                    <p>
+                        Total de la commande<br>
+                        <span id="order-price-ht-value">{{ cart.getOrderPriceHT()|format_currency('EUR') }}</span>
+                    </p>
+                    <p>
+                        TVA<br>
+                        <span>{{ tva }} %</span>
+                    </p>
+                    <p>
+                        Total de la commande TTC<br>
+                        <span id="order-price-ttc-value">{{ (cart.getOrderPriceHT() + (cart.getOrderPriceHT() * tva / 100))|format_currency('EUR') }}</span>
+                    </p>
+                </div>
+                <div class="confirm-order">
+                    <button name="confirm-order">Passer la commande</button>
+                </div>
+            </div>
+        </form>
+    </div>
+{% endblock %}
+
+{% block javascripts_body %}
+    <script>
+        const orderPriceHT = {{ cart.getOrderPriceHT() }};
+        const tax = {{ tva }};
+        const shippingCost = {{ shipping_cost }};
+    </script>
+    <script src="{{ asset('js/cart.js') }}"></script>
+{% endblock %}

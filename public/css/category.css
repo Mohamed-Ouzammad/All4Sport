@@ -1,0 +1,62 @@
+/* Style for the main heading */
+.categories {
+    padding-top: 20px;
+}
+
+.product_cards {
+    padding: 20px 0;
+}
+
+.category:not(:first-child) {
+    margin-top: 20px;
+}
+
+.category-name {
+    display: block;
+    color: var(--whiteColor);
+    background-color: var(--primaryColor);
+    padding: 10px;
+    width: max-content;
+    border-radius: var(--radiusBorder);
+    font-weight: bold;
+    transition: background-color .2s ease;
+}
+.category-name:hover {
+    background-color: #ff8800;
+}
+
+/* ---------------------- search bar ------------------------ */
+
+/* Styles pour la barre de recherche */
+.search-bar {
+    display: flex;
+    gap: 10px;
+    justify-content: space-between;
+    background-color: var(--whiteColor);
+}
+
+.search-bar input {
+    width: 100%;
+    padding: 10px;
+    border-radius: var(--radiusBorder);
+    border: 1px solid #ddd;
+}
+
+.search-bar select {
+    padding: 5px;
+    border-radius: var(--radiusBorder);
+    background-color: var(--whiteColor);
+    border: 1px solid #ddd;
+}
+
+.search-bar button {
+    background-color: #ff8800;
+    border: none;
+    padding: 10px 20px;
+    border-radius: var(--radiusBorder);
+    transition: background-color .2s ease;
+}
+
+.search-bar button:hover {
+    background-color: var(--primaryColor);
+}

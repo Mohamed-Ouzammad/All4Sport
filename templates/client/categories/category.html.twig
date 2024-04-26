@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ category.getName() }}{% endblock %}
+
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('css/category.css') }}">
+{% endblock %}
+
+{% block header %}
+    {% include 'client/headerLinks.html.twig' %}
+{% endblock %}
+
+{% block body %}
+	<h1>{{ category.getName() }}</h1>
+	<div class="app_container app_padding">
+		<form method="GET" class="search-bar">
+			<input type="text" name="p" value="{{ app.request.query.get('p') }}" placeholder="Rechercher un produit...">
+			<button>🔍</button>
+		</form>
+		<div class="product_cards">
+			{% if searchResult is not null %}
+				{% for product in searchResult %}
+					{% include 'client/product_card.html.twig' with {'product': product} %}
+				{% else %}
+					<p>Aucun produit trouvé</p>
+				{% endfor %}
+			{% else %}
+				{% for product in category.getProducts() %}
+					{% include 'client/product_card.html.twig' with {'product': product} %}
+				{% endfor %}
+			{% endif %}
+		</div>
+	</div>
+{% endblock %}

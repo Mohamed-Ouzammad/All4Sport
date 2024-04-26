@@ -1,0 +1,6 @@
+.footer-app {
+    background-color: var(--primaryColor);
+    color: var(--whiteColor);
+    text-align: center;
+    padding: 20px 0;
+}

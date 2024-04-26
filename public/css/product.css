@@ -1,0 +1,78 @@
+/* ------------------ Section affiche du produit ---------------------- */
+.app_padding {
+    padding-bottom: 40px;
+}
+
+.product {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+.product_card-images {
+    width: 50%;
+}
+
+.product .product_card-price {
+    max-width: max-content;
+}
+
+.product-details {
+    width: 50%;
+}
+
+.product-details p {
+    margin: 10px 0;
+    color: var(--primaryColor);
+    border-radius: var(--radiusBorder);
+}
+
+.product h2 {
+    color: var(--primaryColor);
+}
+
+.product button {
+    display: block;
+    font-size: 18px;
+    color: var(--primaryColor);
+    background-color: var(--secondColor);
+    width: 100%;
+    margin-top: 40px;
+    padding: 10px;
+    border-radius: var(--radiusBorder);
+    transition: background-color .2s ease;
+}
+.product button:hover {
+    background-color: var(--primaryColor);
+}
+
+/* ------------------ Section stock du produit ---------------------- */
+.stock-info {
+    margin-bottom: 40px;
+}
+
+.stock-info ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+h3 {
+    color: var(--whiteColor);
+    width: 100%;
+    background-color: var(--primaryColor);
+    border-radius: var(--radiusBorder);
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.stock-info li {
+    color: var(--primaryColor);
+    border: 1px solid #ddd;
+    border-radius: var(--radiusBorder);
+    padding: 6px 10px;
+}
+
+.stock-location {
+    font-weight: bold;
+}

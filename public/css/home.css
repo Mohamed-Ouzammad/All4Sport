@@ -1,0 +1,119 @@
+.section_title {
+    position: relative;
+    text-transform: uppercase;
+    font-weight: 800;
+    font-size: 2em;
+    margin-bottom: 40px;
+}
+
+.section_title span {
+    background: -o-linear-gradient(to right, var(--secondColor), var(--whiteColor) 75%);
+    background: -moz-linear-gradient(to right, var(--secondColor), var(--whiteColor) 75%);
+    background: -webkit-linear-gradient(to right, var(--secondColor), var(--whiteColor) 75%);
+    background: linear-gradient(to right, var(--secondColor), var(--whiteColor) 75%);
+    padding: 2px 4px;
+}
+section:nth-child(n+2) {
+    padding: 80px 0 20px;
+}
+
+/* Styles pour le conteneur du slider */
+.slider-container {
+    position: relative;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.flex {
+    display: flex;
+}
+
+/* Styles pour les cartes du slider */
+.card {
+    display: none;
+    width: 100%;
+    padding: 10px;
+    border-radius: var(--radiusBorder);
+    background-color: var(--whiteColor);
+}
+
+.slider-container img,
+.slider-container .product_card-image {
+    width: 100%;
+    border-radius: var(--radiusBorder);
+}
+
+.slider-container .product_card-images_list {
+    display: flex;
+    flex-direction: column;
+    max-width: 20%;
+    margin: 0;
+    margin-left: 10px;
+}
+
+.card-content {
+    background-color: var(--whiteColor);
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.slider-container .product_card-name {
+    font-size: 1.2em;
+    margin-top: unset;
+    padding: 10px 0;
+}
+
+.right {
+    display: flex;
+    gap: 5px;
+}
+
+.slider-container .product_card-stock p {
+    padding: 0;
+    border: none;
+}
+
+.left-of-right {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.right-of-right.product_card-buttons {
+    justify-content: initial;
+    margin-top: unset;
+}
+.right-of-right {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Style pour les boutons de navigation */
+.slider_btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #0005;
+    color: var(--whiteColor);
+    padding: 10px;
+    border-radius: 50%;
+    transition: background-color .2s ease;
+}
+.slider-cards:hover .slider_btn {
+    background-color: var(--primaryColor);
+}
+.slider-cards:hover .slider_btn:hover {
+    background-color: var(--secondColor);
+}
+
+.slider_btn--left {
+    left: 0;
+}
+.slider_btn--right {
+    right: 0;
+}
